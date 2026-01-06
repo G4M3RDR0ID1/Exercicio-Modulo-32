@@ -100,25 +100,6 @@ Este comparativo comprova, com base nas medições do Lighthouse, que houve gran
 
 ---
 
-## 📎 Como Anexar os Relatórios de Performance
-
-Para atender ao requisito de entrega dos relatórios Lighthouse antes e depois das otimizações, foi adotada a seguinte estratégia:
-
-### Estrutura Utilizada no Repositório
-
-Os arquivos de evidência foram organizados em duas pastas na raiz do projeto:
-
-```
-/
-├── relatorios/
-│   ├── lighthouse-antes.pdf
-│   └── lighthouse-depois.pdf
-│
-└── prints/
-    ├── lighthouse-performance-antes.png
-    └── lighthouse-performance-depois.png
-```
-
 ### Relatórios em PDF
 
 - O relatório inicial gerado pelo Lighthouse foi salvo como:  
@@ -128,10 +109,6 @@ Os arquivos de evidência foram organizados em duas pastas na raiz do projeto:
    **lighthouse-depois.pdf**
 
 Esses arquivos foram incluídos diretamente na pasta `/relatorios` do projeto para permitir fácil acesso pelo avaliador.
-
-### Inclusão dos Prints
-
-Além dos PDFs, foram registrados prints das pontuações nas DevTools para reforçar o comparativo visual, armazenados na pasta `/prints`.
 
 Os relatórios podem ser acessados através dos links abaixo:
 
@@ -146,7 +123,6 @@ Este repositório público contém:
 
 - Código-fonte do projeto otimizado.
 - Dois relatórios Lighthouse (antes e depois).
-- Prints comparativos das métricas.
 - Este arquivo README.md documentando todo o processo.
 
 ---
