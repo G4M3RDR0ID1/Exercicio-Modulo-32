@@ -85,3 +85,24 @@ html, body {
   padding: 16px;
   margin-top: auto;
 }
+
+@media (max-width: 600px) {
+  .header {
+    padding: 30px 0; /* mantém altura confortável */
+  }
+
+  .logo {
+    position: static; /* remove posicionamento absoluto */
+    transform: none;
+    display: block;
+    text-align: center; /* centraliza logo no topo */
+    margin-bottom: 10px;
+  }
+
+  .nav {
+    position: static; /* remove posicionamento absoluto */
+    transform: none;
+    justify-content: center; /* centraliza os botões abaixo do logo */
+    margin-top: 10px;
+  }
+}
