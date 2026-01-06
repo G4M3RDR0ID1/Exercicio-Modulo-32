@@ -19,17 +19,12 @@
 
 .commentCard p {
   font-style: italic;
-  color: #333; /* contraste melhorado em relação ao #555 */
+  color: #333; 
 }
 
 .commentCard span {
   display: block;
   margin-top: 10px;
   font-weight: bold;
-  color: #0d47a1; /* azul mais escuro para contraste suficiente */
-}
-
-.commentCard:focus-within {
-  outline: 2px solid #ffcc00; /* foco visível para acessibilidade */
-  outline-offset: 3px;
+  color: #0d47a1; 
 }

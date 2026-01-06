@@ -27,7 +27,7 @@ export default function CardDestino({
         sizes="100vw"
         quality={60}
         priority={isLcp}           // pré-carrega e evita lazy
-        fetchPriority={isLcp ? "high" : "auto"} // Lighthouse quer fetchPriority=high na LCP
+        fetchPriority={isLcp ? "high" : "auto"} 
         decoding="async"
       />
       <div className={styles.welcome}>

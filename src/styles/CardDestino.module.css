@@ -3,9 +3,9 @@
 }
 
 .heroImage {
-  width: 100%;       /* ocupa toda a largura disponível */
-  height: auto;      /* mantém proporção original */
-  object-fit: cover; /* corta de forma elegante se precisar */
+  width: 100%;       
+  height: auto;      
+  object-fit: cover; 
   border-radius: 8px;
 }
 
