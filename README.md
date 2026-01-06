@@ -1,161 +1,152 @@
-# 🌎 Projeto: Site de Viagens – Exercicio Módulo 32
+# Relatório Técnico de Performance Web – Exercicio Módulo 32
 
-## 📌 Descrição
-Este projeto consiste em um site front-end voltado para apresentação de destinos turísticos. Ele foi desenvolvido durante o curso e utilizado nesta atividade com o objetivo de aplicar técnicas de otimização de performance web e melhorias de código, com base em métricas concretas analisadas através do Chrome DevTools e Lighthouse.
+## Descrição do Projeto
+Este repositório contém um projeto front-end desenvolvido durante o curso, utilizado nesta atividade prática com o objetivo de aplicar melhorias de performance web. A análise e otimização foram guiadas diretamente pelas métricas geradas pelo Lighthouse na ferramenta Chrome DevTools.
 
----
-
-## Gargalos Identificados (Análise Inicial)
-
-Durante a avaliação inicial do projeto, foram encontrados os seguintes problemas principais:
-
-### 📱 Layout não responsivo em telas pequenas
-- Navegação sobreposta ao logo em dispositivos móveis.
-- Falta de media queries para reorganizar elementos.
-- Estrutura inadequada para diferentes resoluções.
-
-### 🧭 Estrutura de navegação centralizada indevidamente
-- Logo e botões não estavam fixados nos cantos.
-- Cortes visuais em telas grandes.
-- Alinhamento inconsistente entre páginas.
-
-### 🎨 Falta de consistência visual
-- Header e footer com estilos diferentes em cada página.
-- Cards de destinos sem padronização.
-- Problemas de espaçamento e tipografia.
-
-### ⚡ Performance
-- Imagens pesadas sem compressão.
-- Scripts bloqueando a renderização.
-- Requisições e arquivos CSS duplicados.
+O foco principal foi medir o desempenho real da aplicação, identificar gargalos concretos e aplicar boas práticas para tornar o site mais rápido, estável e otimizado para dispositivos móveis.
 
 ---
 
-## 🛠️ Melhorias Aplicadas
+## Gargalos Identificados pelo Lighthouse
 
-Com base nos gargalos identificados, foram realizadas diversas otimizações:
+Após gerar o relatório inicial no Lighthouse, foram apontados os seguintes problemas técnicos:
 
-### 🖼️ Imagens
-- Redimensionamento das imagens para tamanhos adequados.
-- Sugestão de uso de formatos modernos e otimizados.
-- Aplicação de boas práticas para reduzir o peso do carregamento.
+### Largest Contentful Paint Elevado
+- O indicador **Largest Contentful Paint (LCP)** apresentou valor alto, indicando demora na exibição do conteúdo principal da página.
+- Esse gargalo estava diretamente relacionado ao carregamento de imagens pesadas e excesso de arquivos estáticos.
 
-### 🧹 Código CSS
-- Unificação de estilos globais no arquivo `globals.css`.
-- Remoção de duplicidades entre arquivos.
-- Limpeza do `Destinos.module.css`, mantendo apenas estilos específicos.
+### JavaScript Excessivo e Não Utilizado
+- Diagnóstico: **Reduza o JavaScript – economia estimada de 285 KiB**
+- Diagnóstico: **Reduza o JavaScript não usado – economia potencial de 301 KiB**
+- Indicação clara de código JavaScript desnecessário sendo entregue ao navegador, causando lentidão e bloqueios na thread principal.
 
-### 📐 Navegação e alinhamento
-- Logo fixado corretamente no canto esquerdo.
-- Botões “Home” e “Destinos” alinhados no canto direito.
-- Ajuste de espaçamentos laterais.
+### Payloads de Rede Muito Grandes
+- O Lighthouse indicou que a página possuía grande volume de dados transferidos, acima do recomendado para uma aplicação simples.
+- Esse problema aumentava o tempo total de download e processamento inicial.
 
-### 📲 Responsividade
-- Criação e aplicação de media queries.
-- Reorganização do header em dispositivos móveis.
-- Aumento do padding e altura do header para melhor legibilidade.
+### Tarefas Longas na Thread Principal
+- Foram encontradas **6 tarefas longas** que prejudicavam o tempo de resposta do navegador.
+- Isso indicava scripts mal organizados e arquivos grandes demais para serem processados de uma vez.
 
-### 🌀 Scripts
-- Ajuste dos scripts com `async/defer`.
-- Redução do bloqueio de renderização.
-- Carregamento mais eficiente do JavaScript.
+### Recursos Bloqueando Renderização
+- Insight: **Renderizar solicitações de bloqueio – economia estimada de 200 ms**
+- CSS e scripts grandes estavam atrasando o primeiro render do site.
 
----
-
-## 📊 Comparativo Antes / Depois
-
-### 1. Estrutura de CSS
-
-**Antes:**
-- Header e footer duplicados em vários arquivos.
-- Dificuldade de manutenção.
-- Inconsistência visual entre páginas.
-
-**Depois:**
-- Estilos centralizados em `globals.css`.
-- Arquivos CSS mais enxutos.
-- Layout consistente em todo o site.
+### Problemas de Cache
+- O relatório mostrou que a aplicação estava **impedindo a restauração do cache de avanço e retorno**, dificultando o reaproveitamento de recursos já carregados pelo navegador.
 
 ---
 
-### 2. Navegação e alinhamento
+## Melhorias Aplicadas
 
-**Antes:**
-- Elementos centralizados indevidamente.
-- Botão “Destinos” cortando na borda.
-- Falta de espaçamento lateral.
+Com base exatamente nas auditorias acima, foram implementadas as seguintes otimizações:
 
-**Depois:**
-- Alinhamento correto nos cantos.
-- Conteúdo sem cortes.
-- Melhor usabilidade em telas grandes.
+### Refatoração do Código JavaScript
+- Remoção de funções e trechos não utilizados.
+- Eliminação de imports desnecessários.
+- Reorganização dos scripts para reduzir o trabalho da thread principal.
+- Minificação dos arquivos JavaScript finais.
 
----
+### Unificação e Limpeza do CSS
+- Centralização dos estilos de header e footer no arquivo `globals.css`.
+- Remoção de duplicidades entre páginas.
+- Redução do tamanho total de arquivos CSS.
+- Minificação do CSS.
 
-### 3. Responsividade
+### Otimização de Imagens
+- Redimensionamento das imagens para tamanhos adequados ao layout real.
+- Redução do peso dos arquivos de imagem.
+- Melhor adequação às dimensões exibidas.
+- Aplicação de técnicas para diminuir o impacto no LCP.
 
-**Antes:**
-- Navegação sobreposta ao logo.
-- Header muito fino.
-- Layout quebrado em mobile.
+### Melhorias de Responsividade
+- Ajustes estruturais de layout com media queries.
+- Correção do alinhamento da navegação.
+- Eliminação de sobreposição entre elementos em telas pequenas.
+- Padronização visual dos cards e componentes.
 
-**Depois:**
-- Media queries aplicadas.
-- Logo centralizado em telas pequenas.
-- Navegação reposicionada abaixo.
-- Ausência total de sobreposição.
-
----
-
-### 4. Performance
-
-**Antes:**
-- Imagens pesadas.
-- Scripts bloqueantes.
-- CSS não minificado.
-
-**Depois:**
-- Imagens mais leves.
-- Scripts não bloqueando o carregamento.
-- Melhor tempo de renderização.
-- Experiência de usuário mais rápida.
+### Minificação Geral
+- HTML, CSS e JS minificados para diminuir payloads de rede e tempo de parse.
 
 ---
 
-## 🚀 Resumo das Melhorias de Maior Impacto
+## Comparativo Antes / Depois
 
-As técnicas que trouxeram maior resultado prático foram:
+### Pontuações Iniciais
+- **Desempenho:** 60  
+- **Acessibilidade:** 91  
+- **Práticas Recomendadas:** 100  
+- **SEO:** 82  
 
-1. **Unificação do CSS global**
-   - Eliminou duplicidade de código.
-   - Garantiu identidade visual consistente.
-   - Facilitou manutenção futura.
-
-2. **Correção do header**
-   - Alinhamento correto do logo e navegação.
-   - Remoção de cortes em telas grandes.
-
-3. **Aplicação de responsividade**
-   - Media queries tornaram o site acessível em qualquer dispositivo.
-   - Melhor organização dos elementos em mobile.
-
-4. **Otimização de performance**
-   - Imagens mais leves e scripts eficientes reduziram o tempo de carregamento.
+### Pontuações Finais (Após Otimizações)
+- **Desempenho:** 99  
+- **Acessibilidade:** 100  
+- **Práticas Recomendadas:** 100  
+- **SEO:** 100  
 
 ---
 
-## 📦 Conteúdo da Entrega
+### Métricas Comparadas
 
-Este repositório contém:
+| Indicador | Antes | Depois |
+|---------|------|-------|
+| Largest Contentful Paint | muito alto | 1,8 s |
+| Total Blocking Time | elevado | 110 ms |
+| Speed Index | regular | 0,9 s |
+| Cumulative Layout Shift | com deslocamentos | 0 |
+| Pontuação Performance | abaixo de 70 | 99 |
 
-- Código-fonte do projeto já otimizado.
-- Relatórios de performance antes e depois.
-- Este README documentando todo o processo de análise e melhoria.
+Este comparativo comprova, com base nas medições do Lighthouse, que houve grande evolução no desempenho e na experiência do usuário.
 
 ---
 
-## 🔗 Link do Repositório
+## 📎 Como Anexar os Relatórios de Performance
 
-Repositório público para avaliação:
+Para atender ao requisito de entrega dos relatórios Lighthouse antes e depois das otimizações, foi adotada a seguinte estratégia:
 
-👉 https://github.com/G4M3RDR0ID1/Exercicio-Modulo-22
+### Estrutura Utilizada no Repositório
+
+Os arquivos de evidência foram organizados em duas pastas na raiz do projeto:
+
+```
+/
+├── relatorios/
+│   ├── lighthouse-antes.pdf
+│   └── lighthouse-depois.pdf
+│
+└── prints/
+    ├── lighthouse-performance-antes.png
+    └── lighthouse-performance-depois.png
+```
+
+### Relatórios em PDF
+
+- O relatório inicial gerado pelo Lighthouse foi salvo como:  
+   **lighthouse-antes.pdf**
+
+- Após todas as melhorias de performance, um novo relatório foi gerado e salvo como:  
+   **lighthouse-depois.pdf**
+
+Esses arquivos foram incluídos diretamente na pasta `/relatorios` do projeto para permitir fácil acesso pelo avaliador.
+
+### Inclusão dos Prints
+
+Além dos PDFs, foram registrados prints das pontuações nas DevTools para reforçar o comparativo visual, armazenados na pasta `/prints`.
+
+Os relatórios podem ser acessados através dos links abaixo:
+
+- [Relatório Lighthouse - Antes das Otimizações](./relatorios/lighthouse-antes.pdf)
+- [Relatório Lighthouse - Depois das Otimizações](./relatorios/lighthouse-depois.pdf)
+
+---
+
+## Conteúdo da Entrega
+
+Este repositório público contém:
+
+- Código-fonte do projeto otimizado.
+- Dois relatórios Lighthouse (antes e depois).
+- Prints comparativos das métricas.
+- Este arquivo README.md documentando todo o processo.
+
+---
