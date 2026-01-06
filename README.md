@@ -123,7 +123,7 @@ Este repositório público contém:
 ---
 
 
-## 🧠 Conclusão
+## Conclusão
 
 O processo de medição com Lighthouse permitiu identificar gargalos reais no projeto. A partir das oportunidades apontadas, foram aplicadas melhorias focadas principalmente em imagens e JavaScript, resultando em uma aplicação com excelente desempenho final.
 
