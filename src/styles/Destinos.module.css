@@ -1,0 +1,75 @@
+/* Layout da página de destinos */
+.layout {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.mainContent {
+  width: 100%;
+  padding: 0;
+}
+
+/* Grid de cards de destinos */
+.destinosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 20px;
+}
+
+/* Card individual de destino */
+.destinoCard {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.destinoCard:hover {
+  transform: translateY(-5px);
+}
+
+.destinoImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.destinoContent {
+  padding: 16px;
+}
+
+.destinoContent h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: #0d47a1;
+}
+
+.destinoContent p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.destinoBtn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #c62828;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.destinoBtn:hover {
+  background-color: #b71c1c;
+}
+
+.destinoBtn:focus {
+  outline: 2px solid #ffcc00;
+  outline-offset: 3px;
+}

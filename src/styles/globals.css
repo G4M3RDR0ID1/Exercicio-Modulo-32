@@ -1,0 +1,87 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Layout base que cola o footer no fundo */
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+/* Header fixo no topo com gradiente azul */
+.header {
+  position: relative;
+  background: linear-gradient(to right, #00bcd4, #2196f3);
+  color: white;
+  padding: 40px 0; /* aumentei a altura */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* Logo fixo no canto esquerdo */
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+/* Navegação fixada no canto direito */
+.nav {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.navBtn {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navBtn:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Footer fixo no final */
+.footer {
+  background-color: #0d47a1;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  margin-top: auto;
+}

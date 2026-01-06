@@ -1,0 +1,42 @@
+.hero {
+  text-align: center;
+}
+
+.heroImage {
+  width: 100%;       /* ocupa toda a largura disponível */
+  height: auto;      /* mantém proporção original */
+  object-fit: cover; /* corta de forma elegante se precisar */
+  border-radius: 8px;
+}
+
+.welcome {
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.welcome h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #c62828;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+
